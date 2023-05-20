@@ -2,10 +2,7 @@ package StudyWeb.domain;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -23,6 +20,13 @@ public class Goal {
     private LocalDateTime goalDate;
 
     private String totalMoney;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user")
+    private User user;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "goal")
+    private JoinList joinList;
 
 }
 

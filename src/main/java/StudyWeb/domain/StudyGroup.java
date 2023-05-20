@@ -2,13 +2,11 @@ package StudyWeb.domain;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "study_group")
 public class StudyGroup {
 
     @Id @GeneratedValue
@@ -22,8 +20,10 @@ public class StudyGroup {
     // maxNum, curNum enum으로 삽입예정
     private String category;
 
-    //관리자 아이디요(매핑 필ㅇ)
-    private User userId;
+    //관리자 아이디(매핑 필ㅇ)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 

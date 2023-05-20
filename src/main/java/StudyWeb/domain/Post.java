@@ -2,10 +2,7 @@ package StudyWeb.domain;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -23,9 +20,11 @@ public class Post {
     private LocalDateTime dateTime;
 
     //매핑 필요
-    private User userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user")
+    private User user;
 
-    //매핑 필요
+    //매핑 필요?
     private Board boardId;
 
 

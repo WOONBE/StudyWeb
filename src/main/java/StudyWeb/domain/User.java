@@ -1,15 +1,16 @@
 package StudyWeb.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Getter @Setter //@Data
+@Data
+
 public class User {
 
     @Id @GeneratedValue
@@ -23,6 +24,22 @@ public class User {
     private String email;
 
     private String category;
+
+    @OneToMany(mappedBy = "user")
+    private List<Timer> timers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<StudyGroup> studyGroups = new ArrayList<>();
+
+    @OneToOne(mappedBy = "user")
+    private Goal goal;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts = new ArrayList<>();
+
+    @OneToOne(mappedBy = "user")
+    private JoinList joinList;
+
 
 
 

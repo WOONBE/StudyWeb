@@ -2,14 +2,12 @@ package StudyWeb.domain;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
 @Entity
+@Table(name = "timer")
 public class Timer {
 
     @Id @GeneratedValue
@@ -24,7 +22,9 @@ public class Timer {
 
 
     //매핑 필요
-    private User userId; //manyToone
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user; //사용자 id
 
 
 
