@@ -1,6 +1,7 @@
 package StudyWeb.repository;
 
+import StudyWeb.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public abstract class UserRepository implements JpaRepository {
+public interface UserRepository extends JpaRepository<User,Long> {
 }

@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RequiredArgsConstructor
 @Controller
-public class UserController {
+public class PostController {
 
-    @GetMapping("/user")
-    public String user(){
+    @GetMapping("/post")
+    public String post(){
         return "";
     }
 }
