@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Data
-
 public class User {
 
     @Id @GeneratedValue
