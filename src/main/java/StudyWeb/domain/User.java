@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    private String name;
+    private String username;
 
     private String phone;
 
@@ -24,19 +25,25 @@ public class User {
 
     private String category;
 
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "mileage")
+    private Long mileage;
+
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "cash")
+    private Long cash;
+
     @OneToMany(mappedBy = "user")
     private List<Timer> timers = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<StudyGroup> studyGroups = new ArrayList<>();
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "user")
     private Goal goal;
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts = new ArrayList<>();
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "user")
     private JoinList joinList;
 
 
