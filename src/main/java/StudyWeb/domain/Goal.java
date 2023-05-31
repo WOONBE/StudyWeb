@@ -1,12 +1,13 @@
 package StudyWeb.domain;
 
 import lombok.Data;
-import status.GoalStatus;
+import StudyWeb.status.GoalStatus;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "goal")
 public class Goal {
     //내 목표
 

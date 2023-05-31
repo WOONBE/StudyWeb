@@ -1,4 +1,4 @@
-package status;
+package StudyWeb.status;
 
 public enum CompleteStatus {
     COMPLETE,FAIL

@@ -1,34 +1,50 @@
 package StudyWeb.domain;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Builder
+@Table(name = "users",uniqueConstraints =
+        {@UniqueConstraint(
+                name = "USERNAME_UNIQUE",
+                columnNames = {"username"})
+        })
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
-@Data
 public class User {
 
-    @Id @GeneratedValue
+    @Id
     @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String email;
+
+    @Column
     private String username;
 
-    private String phone;
 
-    private String email;
+    private String password;
+
+    private boolean emailConfirm;
+
+    private String emailAuthKey;
+
+
 
     private String category;
 
-    @OneToOne(fetch = FetchType.LAZY,mappedBy = "mileage")
+    //@OneToOne(fetch = FetchType.LAZY,mappedBy = "mileage")
     private Long mileage;
 
-    @OneToOne(fetch = FetchType.LAZY,mappedBy = "cash")
+    //@OneToOne(fetch = FetchType.LAZY,mappedBy = "cash")
     private Long cash;
 
     @OneToMany(mappedBy = "user")
@@ -46,9 +62,26 @@ public class User {
     @OneToOne(fetch = FetchType.LAZY,mappedBy = "user")
     private JoinList joinList;
 
+    public void changeUsername(String username) {
+        this.username = username;
+    }
+    public void changePassword(String password) {
+        this.password = password;
+    }
 
 
+    public void updateUserInfo(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
+    public void updateAuthKey(String emailAuthKey) {
+        this.emailAuthKey = emailAuthKey;
+    }
+
+    public void updateEmailConfirm(boolean isConfirm) {
+        this.emailConfirm = isConfirm;
+    }
 
 
 

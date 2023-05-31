@@ -22,11 +22,19 @@ public class QJoinList extends EntityPathBase<JoinList> {
 
     public static final QJoinList joinList = new QJoinList("joinList");
 
+    public final EnumPath<StudyWeb.status.CameraStatus> cameraStatus = createEnum("cameraStatus", StudyWeb.status.CameraStatus.class);
+
+    public final NumberPath<Long> cash = createNumber("cash", Long.class);
+
+    public final EnumPath<StudyWeb.status.CompleteStatus> completeStatus = createEnum("completeStatus", StudyWeb.status.CompleteStatus.class);
+
     public final QGoal goal;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Long> mileage = createNumber("mileage", Long.class);
+
+    public final EnumPath<StudyWeb.status.PayStatus> payStatus = createEnum("payStatus", StudyWeb.status.PayStatus.class);
 
     public final QUser user;
 

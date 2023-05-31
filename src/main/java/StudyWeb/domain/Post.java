@@ -7,12 +7,12 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Table
 public class Post {
 
     @Id @GeneratedValue
     @Column(name = "post_id")
     private Long id;
-
 
     private String title;
 
@@ -26,6 +26,8 @@ public class Post {
     private User user;
 
     //매핑 필요?
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
     private Board boardId;
 
 
