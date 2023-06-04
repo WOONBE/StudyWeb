@@ -1,4 +1,4 @@
-package StudyWeb.dto;
+package StudyWeb.controller.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

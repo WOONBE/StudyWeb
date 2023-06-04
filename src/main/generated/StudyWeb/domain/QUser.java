@@ -42,9 +42,7 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath password = createString("password");
 
-    public final ListPath<Post, QPost> posts = this.<Post, QPost>createList("posts", Post.class, QPost.class, PathInits.DIRECT2);
-
-    public final ListPath<StudyGroup, QStudyGroup> studyGroups = this.<StudyGroup, QStudyGroup>createList("studyGroups", StudyGroup.class, QStudyGroup.class, PathInits.DIRECT2);
+    public final ListPath<StudyWeb.domain.post.Post, StudyWeb.domain.post.QPost> posts = this.<StudyWeb.domain.post.Post, StudyWeb.domain.post.QPost>createList("posts", StudyWeb.domain.post.Post.class, StudyWeb.domain.post.QPost.class, PathInits.DIRECT2);
 
     public final ListPath<Timer, QTimer> timers = this.<Timer, QTimer>createList("timers", Timer.class, QTimer.class, PathInits.DIRECT2);
 

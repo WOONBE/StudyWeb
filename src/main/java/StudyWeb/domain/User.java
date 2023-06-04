@@ -1,9 +1,10 @@
 package StudyWeb.domain;
 
+import StudyWeb.domain.post.Post;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,18 +51,29 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Timer> timers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    private List<StudyGroup> studyGroups = new ArrayList<>();
+//    @OneToMany(mappedBy = "user")
+//    private List<StudyGroup> studyGroups = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY,mappedBy = "user")
     private Goal goal;
 
-    @OneToMany(mappedBy = "user")
-    private List<Post> posts = new ArrayList<>();
+//    @OneToMany(mappedBy = "user")
+//    private List<Post> posts = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY,mappedBy = "user")
     private JoinList joinList;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Post> posts = new ArrayList<>();
+
+    //<--연관관계 편의 메서드-->//
+    public void addPost(Post post) {
+        this.posts.add(post);
+        if (post.getUser() != this) {
+            post.setUser(this);
+        }
+    }
     public void changeUsername(String username) {
         this.username = username;
     }

@@ -2,11 +2,11 @@ package StudyWeb.service;
 
 import StudyWeb.config.auth.token.RefreshToken;
 import StudyWeb.config.auth.token.TokenService;
+import StudyWeb.controller.user.UserDTO;
 import StudyWeb.domain.User;
 import StudyWeb.exception.*;
 import StudyWeb.repository.RefreshTokenRepository;
 import StudyWeb.repository.UserRepository;
-import StudyWeb.admin.UserDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseCookie;
@@ -80,7 +80,7 @@ public class UserService {
     // 회원가입 마지막 절차 username,password 정보 기입
     // Dirty Checking으로 변경
     @Transactional
-    public User createUserAfterEmailValidation(final StudyWeb.dto.UserDTO userDto) {
+    public User createUserAfterEmailValidation(final StudyWeb.controller.user.UserDTO userDto) {
         User user = getByEmail(userDto.getEmail());
         if (!user.isEmailConfirm()) {
             throw new EmailConfirmNotCompleteException();
@@ -109,7 +109,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO loginProcess(UserDTO userDTO, User user, HttpServletResponse response) {
+    public StudyWeb.controller.user.UserDTO loginProcess(StudyWeb.controller.user.UserDTO userDTO, User user, HttpServletResponse response) {
         String accessToken = tokenService.createAccessToken(userDTO.getEmail());
         String refreshToken = tokenService.createRefreshToken(userDTO.getEmail());
         RefreshToken token = RefreshToken.builder()
@@ -120,7 +120,7 @@ public class UserService {
         ResponseCookie cookie = cookieService.createCookie("X-AUTH-REFRESH-TOKEN", refreshToken);
         response.setHeader("X-AUTH-ACCESS-TOKEN", accessToken);
         response.setHeader("Set-Cookie", cookie.toString());
-        return UserDTO.builder()
+        return StudyWeb.controller.user.UserDTO.builder()
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .build();
@@ -189,7 +189,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO updateUsername(String before,String username) {
+    public UserDTO updateUsername(String before, String username) {
         User user = userRepository.findByUsername(before).orElseThrow(UserNotFoundException::new);
         user.changeUsername(username);
         log.info("username was changed {} to {}",before,username);
@@ -203,7 +203,7 @@ public class UserService {
      * Admin 페이지에서 사용
      * */
     @Transactional
-    public User createUserByAdmin(UserDTO userDTO) {
+    public User createUserByAdmin(StudyWeb.admin.UserDTO userDTO) {
         User user = User.builder()
                 .username(userDTO.getUsername())
                 .password(userDTO.getPassword())
@@ -219,5 +219,6 @@ public class UserService {
     public User getUserById(Long userId) {
         return userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
     }
+    //결제 기능 사용 후에 서비스 이용하도록 변경
 
 }

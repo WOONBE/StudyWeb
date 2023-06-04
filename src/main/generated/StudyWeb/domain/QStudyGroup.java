@@ -22,14 +22,35 @@ public class QStudyGroup extends EntityPathBase<StudyGroup> {
 
     public static final QStudyGroup studyGroup = new QStudyGroup("studyGroup");
 
-    public final StringPath category = createString("category");
+    public final StudyWeb.domain.post.QPost _super;
 
-    public final StringPath groupIntro = createString("groupIntro");
+    //inherited
+    public final ListPath<Comment, QComment> comments;
 
-    public final StringPath groupName = createString("groupName");
+    //inherited
+    public final StringPath content;
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createAt;
 
+    public final EnumPath<StudyWeb.status.GroupStatus> groupStatus = createEnum("groupStatus", StudyWeb.status.GroupStatus.class);
+
+    //inherited
+    public final NumberPath<Long> hit;
+
+    //inherited
+    public final NumberPath<Long> id;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> lastModifiedAt;
+
+    //inherited
+    public final ListPath<PostTag, QPostTag> postTags;
+
+    //inherited
+    public final StringPath title;
+
+    // inherited
     public final QUser user;
 
     public QStudyGroup(String variable) {
@@ -50,7 +71,16 @@ public class QStudyGroup extends EntityPathBase<StudyGroup> {
 
     public QStudyGroup(Class<? extends StudyGroup> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.user = inits.isInitialized("user") ? new QUser(forProperty("user"), inits.get("user")) : null;
+        this._super = new StudyWeb.domain.post.QPost(type, metadata, inits);
+        this.comments = _super.comments;
+        this.content = _super.content;
+        this.createAt = _super.createAt;
+        this.hit = _super.hit;
+        this.id = _super.id;
+        this.lastModifiedAt = _super.lastModifiedAt;
+        this.postTags = _super.postTags;
+        this.title = _super.title;
+        this.user = _super.user;
     }
 
 }
