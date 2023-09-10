@@ -22,17 +22,11 @@ public class QGoal extends EntityPathBase<Goal> {
 
     public static final QGoal goal = new QGoal("goal");
 
-    public final StringPath content = createString("content");
-
-    public final DateTimePath<java.time.LocalDateTime> goalDate = createDateTime("goalDate", java.time.LocalDateTime.class);
+    public final EnumPath<StudyWeb.status.GoalStatus> goalStatus = createEnum("goalStatus", StudyWeb.status.GoalStatus.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final QJoinList joinList;
-
-    public final StringPath title = createString("title");
-
-    public final StringPath totalMoney = createString("totalMoney");
 
     public final QUser user;
 

@@ -1,32 +1,32 @@
 package StudyWeb.domain;
 
-import lombok.Data;
+import StudyWeb.domain.post.Post;
+import StudyWeb.status.GroupStatus;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Data
 @Entity
-@Table(name = "study_group")
-public class StudyGroup {
+@Getter
+@DiscriminatorValue("S")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class StudyGroup extends Post {
+    @Enumerated(EnumType.STRING)
+    private GroupStatus groupStatus;
 
-    @Id @GeneratedValue
-    @Column(name = "group_id")
-    private Long id;
+    @Builder
+    public StudyGroup(Long id, User user, String title,
+                      String content, Long hit,
+                      List<Comment> comments,
+                      List<PostTag> tags, GroupStatus groupStatus) {
+        super(id, user, title, content, hit, comments,tags);
+        this.groupStatus = groupStatus;
+    }
 
-    private String groupName;
-
-    private String groupIntro;
-
-    // maxNum, curNum enum으로 삽입예정
-    private String category;
-
-    //관리자 아이디(매핑 필ㅇ)
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-
-
+    public void updateStatus(GroupStatus studyStatus) {
+        this.groupStatus = groupStatus;
+    }
 
 
 }

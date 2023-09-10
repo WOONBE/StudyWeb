@@ -20,15 +20,15 @@ public class GroupService {
     //일단 전체적으로 보류
     private final GroupRepository groupRepository;
 
-    private final User user;
+//    private final User user;
     private final UserRepository userRepository;
-    @Transactional
-    public Long joinGroup(StudyGroup studyGroup,User user){
-
-        Optional<User> joinUser = userRepository.findById(user.getId());
-
-        return user.getId();
-    }
+//    @Transactional
+//    public Long joinGroup(StudyGroup studyGroup,User user){
+//
+//        Optional<User> joinUser = userRepository.findById(user.getId());
+//
+//        return user.getId();
+//    }
 
 
 }

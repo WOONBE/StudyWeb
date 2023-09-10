@@ -11,6 +11,7 @@ import javax.swing.*;
 
 
 
+@Repository
 public interface GroupRepository extends JpaRepository<StudyGroup, Long> {
 
 

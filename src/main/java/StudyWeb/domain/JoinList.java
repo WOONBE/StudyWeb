@@ -1,14 +1,11 @@
 package StudyWeb.domain;
 
 import lombok.Data;
-import org.hibernate.annotations.Fetch;
-import status.CameraStatus;
-import status.CompleteStatus;
-import status.GoalStatus;
-import status.PayStatus;
+import StudyWeb.status.CameraStatus;
+import StudyWeb.status.CompleteStatus;
+import StudyWeb.status.PayStatus;
 
 import javax.persistence.*;
-import java.awt.*;
 
 @Entity
 @Data
@@ -33,10 +30,11 @@ public class JoinList {
     @Enumerated(EnumType.STRING)
     private CompleteStatus completeStatus;
 
-    @OneToOne(fetch = FetchType.LAZY)
+//   @OneToOne(fetch = FetchType.LAZY)
     private Long mileage;
 
-    @OneToOne(fetch = FetchType.LAZY)
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "cash")
     private Long cash;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -22,9 +22,15 @@ public class QUser extends EntityPathBase<User> {
 
     public static final QUser user = new QUser("user");
 
+    public final NumberPath<Long> cash = createNumber("cash", Long.class);
+
     public final StringPath category = createString("category");
 
     public final StringPath email = createString("email");
+
+    public final StringPath emailAuthKey = createString("emailAuthKey");
+
+    public final BooleanPath emailConfirm = createBoolean("emailConfirm");
 
     public final QGoal goal;
 
@@ -32,15 +38,15 @@ public class QUser extends EntityPathBase<User> {
 
     public final QJoinList joinList;
 
-    public final StringPath name = createString("name");
+    public final NumberPath<Long> mileage = createNumber("mileage", Long.class);
 
-    public final StringPath phone = createString("phone");
+    public final StringPath password = createString("password");
 
-    public final ListPath<Post, QPost> posts = this.<Post, QPost>createList("posts", Post.class, QPost.class, PathInits.DIRECT2);
-
-    public final ListPath<StudyGroup, QStudyGroup> studyGroups = this.<StudyGroup, QStudyGroup>createList("studyGroups", StudyGroup.class, QStudyGroup.class, PathInits.DIRECT2);
+    public final ListPath<StudyWeb.domain.post.Post, StudyWeb.domain.post.QPost> posts = this.<StudyWeb.domain.post.Post, StudyWeb.domain.post.QPost>createList("posts", StudyWeb.domain.post.Post.class, StudyWeb.domain.post.QPost.class, PathInits.DIRECT2);
 
     public final ListPath<Timer, QTimer> timers = this.<Timer, QTimer>createList("timers", Timer.class, QTimer.class, PathInits.DIRECT2);
+
+    public final StringPath username = createString("username");
 
     public QUser(String variable) {
         this(User.class, forVariable(variable), INITS);

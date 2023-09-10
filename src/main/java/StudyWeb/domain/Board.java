@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Table(name = "board")
 public class Board {
 
     @Id @GeneratedValue
@@ -15,9 +16,9 @@ public class Board {
 
 
     //매핑 필요
-    @ManyToOne
+    //@ManyToOne
     private String name;
 
     //매핑필요
-    private StudyGroup groupId;
+   // private StudyGroup groupId;
 }
