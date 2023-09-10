@@ -53,9 +53,9 @@ public class EmailService{
 
         String msgg="";
         msgg+= "<div style='margin:100px;'>";
-        msgg+= "<h1> 안녕하세요 Studyweb입니다. </h1>";
+        msgg+= "<h1> 안녕하세요 Studyweb 입니다. </h1>";
         msgg+= "<br>";
-        msgg+= "<p>아래 코드를 회원가입 창으로 돌아가 입력해주세요<p>";
+        msgg+= "<p>아래 코드를 회원가입 창에 입력해주세요<p>";
         msgg+= "<br>";
         msgg+= "<p>감사합니다!<p>";
         msgg+= "<br>";
