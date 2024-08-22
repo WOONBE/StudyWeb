@@ -36,7 +36,7 @@ DataBase : Mysql, AWS RDS, JPQL, ERD AqueryTool
 
 WS/WAS : Tomcat
 
-OCR : AWS Textract, AWS S3
+Infra : Docker, Jenkins
 
 아이디어 회의 : Zoom, Notion
 
