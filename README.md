@@ -31,9 +31,13 @@ ORM : JPA
 ### ⚙️ 기술 스택
 
 Server : AWS EC2
+
 DataBase : Mysql, AWS RDS, JPQL, ERD AqueryTool
+
 WS/WAS : Tomcat
+
 OCR : AWS Textract, AWS S3
+
 아이디어 회의 : Zoom, Notion
 
 ### 📌 주요 기능
