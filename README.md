@@ -9,10 +9,15 @@
 ### 🧑‍🤝‍🧑 개발자 소개
 
 김헌우 : 팀장, CI/CD 및 Backend 총괄
+
 송정근 : Frontend 총괄
+
 위루오페이 : 문서화
+
 정다은 : Backend 팀원
+
 김규민 : Frontend 팀원
+
 
 ### 💻 개발환경
 
